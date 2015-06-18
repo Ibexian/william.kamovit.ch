@@ -1,0 +1,64 @@
+---
+layout:     post
+title:      "Should We Call it Ishmael?"
+subtitle:   "A JS Twitter bot trained on Moby Dick and Reddit"
+date:       2015-06-18 12:00:00
+author:     "Will"
+header-img: "img/ishmael.jpg"
+---
+Using Markov Chains to train to mix tech and classic literature, like this one [trained on H.P. Lovecraft](http://thedoomthatcametopuppet.tumblr.com/?), seems to be on trend right now, so I figured I give it a go with a javascript version.
+
+If you'd like to skip my ramblings and just look at the [code](https://github.com/Ibexian/MelvilleBot.js) or the [resulting twitter bot](https://twitter.com/melvillebot) feel free - otherwise let's talk of whales and Javascript.
+
+> Then gazing at his side to side; and were busily at work; in pure JavaScript, using JSONP and localStorage.
+
+##“Better to sleep with a sober cannibal than a drunk Markov Chain"
+Sure, you can use markov chains to improve search predictions, help with natural language processing, and develop predictive keyboards, but why do something like that when we can spend our time generating sentences that almost make sense based on a great American novel?
+
+For our markov chains [node-markov](https://github.com/substack/node-markov) was a great module. Set the order, set up a stream, feed it some words, and stand back. Your code will spit out semi-readable sentence after a certain amount of time, which depends on the chosen order and the text length (which Moby Dick has quite a bit of). 
+
+So what is this 'order' we're talking about? For our purposes - which are as simple as possible - we can think of the order as how many words come before the word that we are putting into our seed, so rather than the seed forgetting the context of each previous word as it moves through the sentence it remembers the last two and picks the next word based on those two. The higher the order the more readable, the longer the code takes to run, and the less beautiful randomness you get. For Melvillebot we've gone with an order of 2.
+
+##"Scraping is the parent of fear.” 
+Now that we have our markov chains trained - it's time to get inputs that we'll be using. For this project I decided to use the top posts off of [/r/javascript](http://www.reddit.com/r/javascript). Now there are lots of different ways that we could approach this: we could use the reddit api, we could have phantomjs load up the website in headless mode and pull down the text to parse, or we could, as we have, use [feedparser](https://github.com/danmactough/node-feedparser) to parse the page specific rss feed after we pull it down via ajax.
+
+##"Split your lungs for Twitter Bots"
+Surprisingly, the easiest part of the whole process was getting the twitter bot up and running. By using [twit](https://github.com/ttezel/twit), a great Twitter client for node, we were up and posting to twitter in about 10 lines of code.  
+
+	var Twit = require('twit');
+
+	var T = new Twit({
+		consumer_key: '-------------'
+		, consumer_secret: '-------------'
+		, access_token: '---------------------------'
+		, access_token_secret: '-------------'
+	});
+
+	module.exports = {
+		twitterPost: function(text) {
+			T.post('statuses/update', { status: text }, function(err, data, response) {
+			  console.log("data", data);
+			})	
+		}
+	}
+
+So now that we had a scraped feed, a markov chain, and a twitter bot, what do we do? Put them together of course. 
+
+Once or twice a day Melvillebot gets fired off:
+
+* 	It begins by scraping reddit for the top stories of the last 24 hours on javascript. 
+
+* With these titles in hand we split them up word by word and run each through our Markov chain - allowing the seed to build sentences backward. 
+
+* Once we get a result we add the remainder of the title to the end of the result (so we can see a bit of the original title in our result) and add it to an array of results.
+
+* Finally the twitter bot picks a result at random from the array and fires it off to twitter
+
+##“I know not all that may be coming, but be it what it will, I'll go to it laughing.”
+Our adventure with Markov Chains and classical literature is far from over, but what comes next? For now this project has a few goals:
+
+* Being able to respond to other people's tweets through the chain
+
+* Optimizing the chain itself to run faster and use more of the book (we're at around 60% now)
+
+* Further on down the road I'd like to convert this project into a twitter bot that simply pulls from an API that allows for multiple authors, and different orders on request.

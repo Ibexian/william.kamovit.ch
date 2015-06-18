@@ -44,14 +44,14 @@ function checkWidth() {
 
 
   var NewOriental = new Marker(112.938814,28.228209,"NewOriental", 'commercial', 'New Oriental', '3togyyo6');
-  var Cambridge = new Marker(-71.253956,42.376727,'cambridge','commercial', 'The Cambridge Institute', 'lnxos0eb');
+  var MediaMath = new Marker(-71.253956,42.376727,'MediaMath','commercial', 'Media Math', 'lnxos0eb');
   var NKIDP = new Marker(-77.029716,38.8953,'NKIDP','commercial', 'North Korean International Documentation Project', 'xzsjc9cn');
   var PKU = new Marker(116.305611,39.987755, 'PKU', 'college', 'Peking University', 'xu37qi6o');
   var GWU = new Marker(-77.046272,38.899798, 'GWU', 'college', 'George Washington University', '0l5qibch');
   var SOAS = new Marker(-0.12889623641967773,51.52204224896724, 'SOAS', 'college', 'School of Oriental and African Studies', 'xdtpyk00');
   var geoJson = {
       type: 'FeatureCollection',
-      features: [NewOriental, Cambridge, NKIDP, PKU, GWU, SOAS]
+      features: [NewOriental, MediaMath, NKIDP, PKU, GWU, SOAS]
       };
   // Make the GeoJSON linkable in the same window
   map.markerLayer.setGeoJSON(geoJson);
