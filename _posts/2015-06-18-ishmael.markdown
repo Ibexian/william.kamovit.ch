@@ -6,7 +6,7 @@ date:       2015-06-18 12:00:00
 author:     "Will"
 header-img: "img/ishmael.jpg"
 ---
-Using Markov Chains to train to mix tech and classic literature, like this one [trained on H.P. Lovecraft](http://thedoomthatcametopuppet.tumblr.com/?), seems to be on trend right now, so I figured I give it a go with a javascript version.
+Using Markov Chains to train to mix tech and classic literature, like this one [trained on H.P. Lovecraft](http://thedoomthatcametopuppet.tumblr.com/?), seems to be on trend right now, so I figured I'd give it a go with a javascript version.
 
 If you'd like to skip my ramblings and just look at the [code](https://github.com/Ibexian/MelvilleBot.js) or the [resulting twitter bot](https://twitter.com/melvillebot) feel free - otherwise let's talk of whales and Javascript.
 
