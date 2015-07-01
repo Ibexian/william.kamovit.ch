@@ -4,7 +4,7 @@ title:      "Wordsworths Words"
 subtitle:   "D3 Visualization of Wordsworths Poetry"
 date:       2014-06-14 12:00:00
 author:     "Will"
-header-img: "img/words.png"
+header-img: "img/words.jpg"
 ---
 During the past month I spent some time sharpening up my D3 chops - and what better way to do so than a data visualization competition? The task was simple - take an array of word frequency and length of Wordsworth's collected works (available [here](http://william.kamovit.ch/Wordsworths-Words/data.json)) and through whatever means necessary make it into some sort of data visualization.
 
