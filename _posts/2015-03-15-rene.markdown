@@ -33,4 +33,4 @@ forever,
 and Yeoman (for the scaffolding)
 
 
-A demo of the project is avialable [here](http://www.williamkamovitch.com/projects/rectifyingrene/)
+A demo of the project is avialable [here](http://william.kamovit.ch/Rectifying-Rene/)
