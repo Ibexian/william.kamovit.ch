@@ -34,7 +34,7 @@ After cloning the node-dash-button git repo it turned out that node-dash-button 
 
 I decided to go with the node version upgrade, but it ended up leading a bit further into the javascript arcana than I had planned. 
 
-Since I'm not the first person to go down this path there were several guides readily available that showed how to get node v4 on to any version of a raspberry pi (https://blog.wia.io/installing-node-js-v4-0-0-on-a-raspberry-pi). 
+Since I'm not the first person to go down this path there were several guides readily available that showed how to [get node v4 on to any version of a raspberry pi.](https://blog.wia.io/installing-node-js-v4-0-0-on-a-raspberry-pi)
 
 What the available guides failed to mention was that __some aspects of node v4.0.0+ rely on a different version of the underlying GCC than the default one.__
 
