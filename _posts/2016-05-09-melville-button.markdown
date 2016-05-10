@@ -19,7 +19,7 @@ Scanning for button presses on my computer works out of the box as well, but sin
 
 ### Enter the raspberry pi
 
-Fortunately I already had a raspberry pi lying around without any use. My raspberry pi was already running Raspian, so it shouldn't take me to much effort to get node and node-dash running - well that was the thought at least.
+Fortunately, I already had a raspberry pi lying around without any use. My raspberry pi was already running Raspian, so it shouldn't take me to much effort to get node and node-dash running - well that was the thought at least.
 
 After installing node on raspbian:
 
@@ -38,11 +38,11 @@ Since I'm not the first person to go down this path there were several guides re
 
 What the available guides failed to mention was that __some aspects of node v4.0.0+ rely on a different version of the underlying GCC than the default one.__
 
-This stems from the V8 javascript compiler in node v4.0.0 - trying to run node-pcap and monitor events simply innundated me with compiler errors.
+This stems from the V8 javascript compiler in node v4.0.0 - trying to run node-pcap and monitor events simply inundated me with compiler errors.
 
 ### Bigger numbers are better: GCC 4.8 > 4.6
 
-Fortunately for us - even though the default version is 4.6 - there's a package for 4.8 available in raspbian. So it's a simple enough (though perhaps scary) task to get the newer version installed.
+Fortunately, for us - even though the default version is 4.6 - there's a package for 4.8 available in raspbian. So it's a simple enough (though perhaps scary) task to get the newer version installed.
 
 	sudo apt-get install gcc-4.8 g++-4.8
 	cd /usr/bin
