@@ -21,16 +21,18 @@ Plus there is a toggle, so now we can have it both ways - true statements or sta
 
 ![Flipping Rene on his head](/img/rene-example.png)
 
-###Technical Colophon:
+### Technical Colophon:
 
-Sass,
-Bootstrap,
-Microsoft Translator API,
-Node.js,
-request.js,
-fontello,
-forever,
-and Yeoman (for the scaffolding)
+- Sass,
+- Bootstrap,
+- Microsoft Translator API,
+- Node.js,
+- request.js,
+- fontello,
+- forever,
+- Yeoman (for the scaffolding)
+
+_[5/20/2016]_ Added the excellent natural language processing library [NLP Compromise](https://github.com/nlp-compromise/nlp_compromise/tree/master) to tighten up the phrasing (e.g. when to use "a" vs "an" or how to conjugate verbs). 
 
 
 A demo of the project is avialable [here](http://william.kamovit.ch/Rectifying-Rene/)

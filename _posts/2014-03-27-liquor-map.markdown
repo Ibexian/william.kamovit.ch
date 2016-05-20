@@ -6,7 +6,7 @@ date:       2014-03-27 12:00:00
 author:     "Will"
 header-img: "img/mapback.png"
 ---
-#Best Laid Plans
+# Best Laid Plans
 
 When I set out to make a heat map of the Massachusetts liquor licenses I had assumed that getting the data would be the least of my concerns. I was looking forward to a project focused on the design of a heat map, so using a readily available data set would do just the trick. After all, this is public data, what could be difficult about that?
 
@@ -16,7 +16,7 @@ Massachusetts in all its infinite wisdom has decided, unlike other states, to ma
 
 Well not quite - it turns out for one reason or another both GIS and Tilemill, which I’d be using for the map data, refused to parse the address data in the CSV, and after many attempts to reconfigure I gave up. You know what doesn’t fail? Latitude and Longitude! Time to geocode me some addresses. 
 
-#Slowly but Surely
+# Slowly but Surely
 
 Writing own geocoding parser using Google Maps API  ~50-60 Results
 
@@ -32,7 +32,7 @@ Final Result (after running Google Refine a few times) - 8500 Results in Lat/Lon
 
 
 
-#Styling the Data
+# Styling the Data
 
 Since I’m new to working with the heat map tools in GIS I did get a result in the color I wanted, but the map just didn’t feel interactive with that method.
 
