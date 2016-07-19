@@ -1,7 +1,8 @@
 body {
   font-family: 'Lora', 'Times New Roman', serif;
   font-size: 20px;
-  color: #404040;
+  color: #ecf0f1;
+  background: url(../img/stardust.png) repeat black;
 }
 p {
   line-height: 1.5;
@@ -20,11 +21,11 @@ h6 {
   font-weight: 800;
 }
 a {
-  color: #404040;
+  color: #f1c40f;
 }
 a:hover,
 a:focus {
-  color: #d14836;
+  color: #ff7b69;
 }
 blockquote {
   color: #808080;
@@ -36,6 +37,67 @@ hr.small {
   border-width: 4px;
   border-color: white;
 }
+
+#planets {
+  z-index: -20;
+  position: absolute;
+  top: -300px;
+}
+
+.orbit {
+  stroke : #fff;
+  fill : none;
+}
+.planet {
+  stroke : #000000;
+  fill : #FFFFFF;
+}
+header:hover > #planets > svg > g > .planet {
+  transform: rotate(900deg);
+  transition: all 10s ease;
+}
+
+header > #planets > svg > g > .planet {
+  transition: all 10s ease;
+}
+.mercury {
+  stroke: #bdc3c7;
+  fill: #bdc3c7;
+}
+.venus {
+  stroke:#EB974E;
+  fill:#EB974E;
+}
+.jupiter {
+  stroke:#FDE3A7;
+  fill:#FDE3A7;
+}
+.earth {
+  stroke:#2980b9;
+  fill:#2980b9;
+}
+.mars {
+  stroke:#c0392b;
+  fill:#c0392b;
+}
+.saturn {
+  fill: #f39c12;
+  stroke: #f39c12;
+}
+.neptune {
+  stroke: #34495e;
+  fill: #34495e;
+}
+.uranus {
+  stroke: #3498db;
+  fill: #3498db;
+}
+.sun {
+  stroke : #f1c40f;
+  fill : #f1c40f;
+}
+
+
 .navbar-custom {
   background: white;
   position: absolute;
@@ -62,12 +124,11 @@ hr.small {
   .navbar-custom .navbar-brand {
     color: white;
     padding: 20px 20px 70px 20px;
-    border-radius: 50%;
-    background: hsla(0, 100%, 100%, 0.9);
+    background: #ecf0f1;
   }
   .navbar-custom .navbar-brand:hover,
   .navbar-custom .navbar-brand:focus {
-    color: rgba(255, 255, 255, 0.2);
+    background: #ecf0f1;
   }
   .navbar-custom .nav li a {
     color: white;
@@ -75,7 +136,7 @@ hr.small {
   }
   .navbar-custom .nav li a:hover,
   .navbar-custom .nav li a:focus {
-    color: rgba(255, 255, 255, 0.8);
+    background: #ecf0f1;
   }
 }
 @media only screen and (min-width: 1170px) {
@@ -107,7 +168,7 @@ hr.small {
   }
   .navbar-custom.is-fixed .navbar-brand:hover,
   .navbar-custom.is-fixed .navbar-brand:focus {
-    color: #d14836;
+    color: #f1c40f;
   }
   .navbar-custom.is-fixed .nav li a {
     color: #404040;
@@ -204,12 +265,12 @@ hr.small {
   }
 }
 .post-preview > a {
-  color: #404040;
+  color: #ecf0f1;
 }
 .post-preview > a:hover,
 .post-preview > a:focus {
   text-decoration: none;
-  color: #d14836;
+  color: #f1c40f;
 }
 .post-preview > a > .post-title {
   font-size: 30px;
@@ -233,7 +294,7 @@ hr.small {
 }
 .post-preview > .post-meta > a:hover,
 .post-preview > .post-meta > a:focus {
-  color: #d14836;
+  color: #f1c40f;
   text-decoration: underline;
 }
 @media only screen and (min-width: 768px) {
@@ -313,7 +374,7 @@ footer .copyright {
   opacity: 1;
 }
 .floating-label-form-group-with-focus label {
-  color: #d14836;
+  color: #f1c40f;
 }
 form .row:first-child .floating-label-form-group {
   border-top: 1px solid #eeeeee;
@@ -333,8 +394,8 @@ form .row:first-child .floating-label-form-group {
 }
 .btn-default:hover,
 .btn-default:focus {
-  background-color: #d14836;
-  border: 1px solid #d14836;
+  background-color: #f1c40f;
+  border: 1px solid #f1c40f;
   color: white;
 }
 .pager {
@@ -361,8 +422,8 @@ form .row:first-child .floating-label-form-group {
 .pager li > a:hover,
 .pager li > a:focus {
   color: white;
-  background-color: #d14836;
-  border: 1px solid #d14836;
+  background-color: #f1c40f;
+  border: 1px solid #f1c40f;
 }
 .pager .disabled > a,
 .pager .disabled > a:hover,
@@ -375,12 +436,12 @@ form .row:first-child .floating-label-form-group {
 ::-moz-selection {
   color: white;
   text-shadow: none;
-  background: #d14836;
+  background: #f1c40f;
 }
 ::selection {
   color: white;
   text-shadow: none;
-  background: #d14836;
+  background: #f1c40f;
 }
 img::selection {
   color: white;
@@ -391,5 +452,5 @@ img::-moz-selection {
   background: transparent;
 }
 body {
-  webkit-tap-highlight-color: #d14836;
+  webkit-tap-highlight-color: #f1c40f;
 }

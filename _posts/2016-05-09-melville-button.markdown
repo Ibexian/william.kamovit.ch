@@ -4,7 +4,7 @@ title:      "Melville Button"
 subtitle:   "A tale of node, raspberry pi, and compiler upgrades"
 date:       2016-05-09 12:00:00
 author:     "Will"
-header-img: "img/melvillebutton.png"
+header-img: "img/dash.gif"
 ---
 Ever since I bought an Amazon Dash button I've been planning on somehow using it to trigger my twitter bots, and when I found [node-dash-button](https://github.com/hortinstein/node-dash-button) I finally got the kick to move forward.
 
