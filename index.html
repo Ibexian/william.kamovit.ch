@@ -16,7 +16,7 @@ description: "A Mess of Sevens and Eights"
     </a>
     <p class="post-meta">Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}</p>
 </div>
-<hr>
+{% if forloop.last != true %}<hr> {% endif %}
 {% endfor %}
 
 <!-- Pager -->
