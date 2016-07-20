@@ -24,8 +24,8 @@ var makemap = function (zoom) {
         $(".leaflet-bar").remove();
         $(".leaflet-right").remove();
 
-      // Return the map 
-      return map;        
+      // Return the map
+      return map;
 };
 
 // Given a screen size, return a zoom level for mapbox.
@@ -37,6 +37,9 @@ var adaptivezoom = function(size) {
 
 function checkWidth() {
   var windowSize = $(window).width();
+  if(!$('#map').length){ //Escape if map container doesn't load
+    return false;
+  }
 
   //Change the zoom level of the initial map load based on screen size
   var zoom = adaptivezoom(windowSize);
@@ -59,6 +62,7 @@ function checkWidth() {
     e.layer.unbindPopup();
     window.open(e.layer.feature.properties.url,'_self');
   });
+  iss(map);
   return map;
 }
 //Update zoom and recenter as window is resized
@@ -67,7 +71,7 @@ var newsize = function(map) {
       var windowSize = $(window).width();
       var zoomLevel = adaptivezoom(windowSize);
       map.setView([43, 14.9], zoomLevel);
-  };    
+  };
 };
 
 var iss = function(map) {
@@ -86,12 +90,9 @@ var iss = function(map) {
       dataType: "jsonp"
     });
   }, 2000);
-
-
-};                  
+};
 
 $(document).ready(function() {
     var map = checkWidth();
-    iss(map);
     $(window).resize(newsize(map));
 });

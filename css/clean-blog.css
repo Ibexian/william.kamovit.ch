@@ -37,13 +37,12 @@ hr.small {
   border-width: 4px;
   border-color: white;
 }
-
+/* ======= Solar system styles ====== */
 #planets {
   z-index: -20;
   position: absolute;
   top: -300px;
 }
-
 .orbit {
   stroke : #fff;
   fill : none;
@@ -97,7 +96,7 @@ header > #planets > svg > g > .planet {
   fill : #f1c40f;
 }
 
-
+/* ======= end solar system ===== */
 .navbar-custom {
   background: white;
   position: absolute;
