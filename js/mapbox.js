@@ -12,7 +12,8 @@
     this.type = 'Feature';
 }
 var makemap = function (zoom) {
-  var map = L.mapbox.map('map', 'wjkamovitch.map-hcqzgwpo', {detectRetina: true}).setView([43, 14.9], zoom);
+  L.mapbox.accessToken = 'pk.eyJ1Ijoid2prYW1vdml0Y2giLCJhIjoiNnExWENJMCJ9.tASAod7myUnI3wIfRKKlxA'
+  var map = L.mapbox.map('map').setView([43, 14.9], zoom);
         //disable map movement
         map.touchZoom.disable();
         map.dragging.disable();
@@ -23,7 +24,7 @@ var makemap = function (zoom) {
         //manually remove the zoom buttons
         $(".leaflet-bar").remove();
         $(".leaflet-right").remove();
-
+        L.mapbox.styleLayer('mapbox://styles/wjkamovitch/citaeut15000f2ipgey6e5p2v').addTo(map);
       // Return the map
       return map;
 };
@@ -57,8 +58,8 @@ function checkWidth() {
       features: [NewOriental, MediaMath, NKIDP, PKU, GWU, SOAS]
       };
   // Make the GeoJSON linkable in the same window
-  map.markerLayer.setGeoJSON(geoJson);
-  map.markerLayer.on('click', function(e) {
+  map.featureLayer.setGeoJSON(geoJson);
+  map.featureLayer.on('click', function(e) {
     e.layer.unbindPopup();
     window.open(e.layer.feature.properties.url,'_self');
   });
