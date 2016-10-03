@@ -1,7 +1,6 @@
 var windowSize = $(window).width();
 var w = windowSize > 800 ? 800 : windowSize;
 var h = 600;
-var t0 = Date.now();
 var planets = [ //Yes the sizes are not to scale... at all
   { R: 50, r: 5, name: 'mercury', pos: 0},
   { R: 100, r: 9, name: 'venus', pos: 180},

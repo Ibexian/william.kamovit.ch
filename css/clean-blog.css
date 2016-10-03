@@ -2,7 +2,7 @@ body {
   font-family: 'Lora', 'Times New Roman', serif;
   font-size: 20px;
   color: #ecf0f1;
-  background: url(../img/stardust.png) repeat black;
+  background: url(../img/stardust.png) repeat black fixed;
 }
 p {
   line-height: 1.5;
@@ -38,10 +38,21 @@ hr.small {
   border-color: white;
 }
 /* ======= Solar system styles ====== */
+@keyframes orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 #planets {
   z-index: -20;
   position: absolute;
   top: -300px;
+  animation-name: orbit;
+  animation-iteration-count: 3;
 }
 .orbit {
   stroke : #fff;
@@ -50,15 +61,9 @@ hr.small {
 .planet {
   stroke : #000000;
   fill : #FFFFFF;
-}
-header:hover > #planets > svg > g > .planet {
-  transform: rotate(900deg);
-  transition: all 10s ease;
+  animation: orbit 10s 2 linear;
 }
 
-header > #planets > svg > g > .planet {
-  transition: all 10s ease;
-}
 .mercury {
   stroke: #bdc3c7;
   fill: #bdc3c7;
@@ -97,6 +102,11 @@ header > #planets > svg > g > .planet {
 }
 
 /* ======= end solar system ===== */
+
+.marker-title {
+  color: black;
+}
+
 .navbar-custom {
   background: white;
   position: absolute;
@@ -199,6 +209,10 @@ header > #planets > svg > g > .planet {
 .intro-header .page-heading {
   padding: 100px 0 50px;
   color: white;
+}
+
+.intro-header .site-heading {
+  padding: 250px 0 0;
 }
 /*@media only screen and (min-width: 768px) {
   .intro-header .site-heading,
