@@ -21,6 +21,6 @@ For my bookmarklet I wanted to show the full power of the fire animation, and th
 
 	javascript:(function(){var a=document.getElementsByTagName("body")[0],b="font-effect-fire-animation",c="myCss";if(!document.getElementById(c)){var d=document.getElementsByTagName("head")[0],e=document.createElement("link");e.id=c,e.rel="stylesheet",e.type="text/css",e.href=document.location.protocol+"//fonts.googleapis.com/css?family=Rancho&effect=fire-animation",e.media="all",d.appendChild(e)}a.classList?a.classList.add(b):a.className+=" "+b})();
 
-You've now been granted the keys to this awful new kingdom - **go forth and make set text on fire!**
+You've now been granted the keys to this awful new kingdom - **go forth and set text on fire!**
 
 ![This page is on fire](/img/firepage.png)
