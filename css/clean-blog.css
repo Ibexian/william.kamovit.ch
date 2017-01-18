@@ -37,70 +37,50 @@ hr.small {
   border-width: 4px;
   border-color: white;
 }
-/* ======= Solar system styles ====== */
-@keyframes orbit {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-#planets {
-  z-index: -20;
+/* ======= Main Page Styles ====== */
+#earth {
+  top: 1px;
+  left: 1px;
+  height: 20vh;
   position: absolute;
-  top: -300px;
-  animation-name: orbit;
-  animation-iteration-count: 3;
 }
-.orbit {
-  stroke : #fff;
-  fill : none;
-}
-.planet {
-  stroke : #000000;
-  fill : #FFFFFF;
-  animation: orbit 10s 2 linear;
-}
-
-.mercury {
-  stroke: #bdc3c7;
-  fill: #bdc3c7;
-}
-.venus {
-  stroke:#EB974E;
-  fill:#EB974E;
-}
-.jupiter {
-  stroke:#FDE3A7;
-  fill:#FDE3A7;
-}
-.earth {
-  stroke:#2980b9;
-  fill:#2980b9;
-}
-.mars {
-  stroke:#c0392b;
-  fill:#c0392b;
-}
-.saturn {
-  fill: #f39c12;
-  stroke: #f39c12;
-}
-.neptune {
-  stroke: #34495e;
-  fill: #34495e;
-}
-.uranus {
-  stroke: #3498db;
-  fill: #3498db;
-}
-.sun {
-  stroke : #f1c40f;
-  fill : #f1c40f;
+#screen {
+  background-image: url(../img/dark_matter.png);
+  width: 60vw;
+  height: 90vh;
+  margin: 5vh auto;
+  color: #2ad655;
+  font-family: monospace;
+  font-weight: lighter;
+  text-shadow: 0px 3px 2px rgba(42, 214, 85, 0.4);
+  border: 25px solid grey;
+  border-image: url("../img/squared_metal.png") 25 25 repeat;
+  padding: 2em;
+  box-shadow: 0 0 3px 3px rgba(0,0,0,0.4);
 }
 
+.bar {
+  position: absolute;
+  height: 100%;
+  z-index: -1;
+}
+.side {
+    -webkit-clip-path: polygon(100% 30%, 0 30%, 0 36%, 100% 36%);
+    clip-path: polygon(100% 47%, 0 47%, 0 53%, 100% 53%);
+}
+
+.bottomside {
+    bottom: 0;
+    -webkit-clip-path: polygon(100% 60%, 0 60%, 0 66%, 100% 66%);
+    clip-path: polygon(100% 60%, 0 60%, 0 66%, 100% 66%);
+}
+
+.right {
+  right: 0;
+}
+.left {
+  left: 0;
+}
 /* ======= end solar system ===== */
 
 .marker-title {
@@ -286,7 +266,6 @@ hr.small {
   color: #f1c40f;
 }
 .post-preview > a > .post-title {
-  font-size: 30px;
   margin-top: 30px;
   margin-bottom: 10px;
 }
@@ -310,11 +289,7 @@ hr.small {
   color: #f1c40f;
   text-decoration: underline;
 }
-@media only screen and (min-width: 768px) {
-  .post-preview > a > .post-title {
-    font-size: 36px;
-  }
-}
+
 .section-heading {
   font-size: 36px;
   margin-top: 60px;
