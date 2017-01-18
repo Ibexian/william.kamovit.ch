@@ -1,0 +1,93 @@
+body {
+  position: relative;
+  box-sizing: border-box;
+  width:  100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: url(../img/stardust.png) repeat black fixed;
+  background-position: right 0px bottom 0px;
+  margin: 0;
+  border: 5px solid grey;
+  border-image: url("../img/squared_metal.png") 5 5 repeat;
+}
+
+hr {
+  border-top: 1px dashed #2ad655;
+}
+.navbar-brand {
+  display:none;
+}
+.index-container {
+  height:100%;
+  width: 100%;
+  overflow: scroll;
+}
+.index-heading {
+  background: black;
+  margin: -2em -2em 0 -2em;
+  padding: 1em;
+}
+#screen .index-heading > h1 {
+  margin-top: 0;
+  display: inline;
+  font-size: 26px;
+}
+#sub-index-heading {
+  float: right;
+  display:inline;
+  font-size: 15px;
+}
+
+.post-title {
+  font-size: 19px;
+}
+
+.post-subtitle {
+  font-size: 17px;
+}
+
+.post-meta {
+  font-size: 12px !important;
+  color: #2ad655 !important;
+}
+
+.post-preview > a {
+  text-decoration: none;
+  color: #2ad655;
+}
+
+.post-preview > a:hover {
+  color: white;
+  cursor: pointer;
+}
+
+footer > .container > .row {
+  margin-top: -115px;
+}
+
+.next a, .previous a {
+  border: none !important;
+  background: none !important;
+  color: white;
+}
+
+.copyright {
+  display:none;
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    border: none;
+  }
+  #screen {
+    width:100%;
+    border: none;
+    margin: 0;
+    padding-top: 4em;
+    height: 100vh;
+
+  }
+  .index-container {
+    padding-bottom: 4em;
+  }
+}

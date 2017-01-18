@@ -42,21 +42,17 @@
 <!-- jQuery -->
 <script src="{{ "/js/jquery.min.js " | prepend: site.baseurl }}"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="{{ "/js/bootstrap.min.js " | prepend: site.baseurl }}"></script>
-
 <!-- Custom Theme JavaScript -->
 <script src="{{ "/js/clean-blog.min.js " | prepend: site.baseurl }}"></script>
 
-<!-- Mapbox -->
-<script src='http://api.tiles.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
-
-<!-- Custom Map -->
-<script src="{{ "/js/mapbox.js" | prepend: site.baseurl }}"></script>
-
-<!-- Solar system -->
-<script src="http://d3js.org/d3.v4.min.js"></script>
-<script src="{{ "/js/planets.js" | prepend: site.baseurl }}"></script>
+{% if page.description != "Adventures in Javascript" %}
+    <!-- Mapbox -->
+    <script src='http://api.tiles.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
+    <!-- Custom Map -->
+    <script src="{{ "/js/mapbox.js" | prepend: site.baseurl }}"></script>
+{% endif %}
+{% if page.description == "Adventures in Javascript" %}
 <!-- Custom Scripts -->
 <script src="{{ "/js/main.js" | prepend: site.baseurl }}"></script>
+{% endif %}
 
