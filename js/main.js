@@ -7,8 +7,9 @@ function travel() {
   if (!document.getElementById('earth')) { return; }
   var height = document.getElementById('earth').style.height;
   var zoomLevel = Number.parseInt(height.slice(0, -2), 10);
+  if (zoomLevel > 100) { return; }
   document.getElementById('earth').style.height = (zoomLevel + 1) + "vh";
-  window.setTimeout(travel, 1000);
+  window.setTimeout(travel, 2000);
 }
 
 function checkKey(e) {
