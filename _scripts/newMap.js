@@ -1,3 +1,4 @@
+require('./mapbox.js');
 //Set up our custom linked GEOJSON
   function Marker(lat, long, url, symbol, title, id){
     this.geometry = {};
