@@ -12,7 +12,6 @@
                             </span>
                         </a>
                     </li>
-                    {% if site.twitter_username %}
                     <li>
                         <a href="https://twitter.com/{{ site.twitter_username }}">
                             <span class="fa-stack fa-lg">
@@ -21,8 +20,6 @@
                             </span>
                         </a>
                     </li>
-                    {% endif %}
-                    {% if site.github_username %}
                     <li>
                         <a href="https://github.com/{{ site.github_username }}">
                             <span class="fa-stack fa-lg">
@@ -31,7 +28,6 @@
                             </span>
                         </a>
                     </li>
-                    {% endif %}
                 </ul>
                 <p class="copyright text-muted">Copyright &copy; {{ site.title }} {{ site.time | date: '%Y' }}</p>
             </div>
@@ -39,20 +35,8 @@
     </div>
 </footer>
 
-<!-- jQuery -->
-<script src="{{ "/js/jquery.min.js " | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/app.bundle.js " | prepend: site.baseurl }}"></script>
 
-<!-- Custom Theme JavaScript -->
-<script src="{{ "/js/clean-blog.min.js " | prepend: site.baseurl }}"></script>
-
-{% if page.description != "Adventures in Javascript" %}
-    <!-- Mapbox -->
-    <script src='http://api.tiles.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
-    <!-- Custom Map -->
-    <script src="{{ "/js/mapbox.js" | prepend: site.baseurl }}"></script>
+{% if page.title == "About" %}
+    <script src="{{ "/js/mapbox.bundle.js" | prepend: site.baseurl }}"></script>
 {% endif %}
-{% if page.description == "Adventures in Javascript" %}
-<!-- Custom Scripts -->
-<script src="{{ "/js/main.js" | prepend: site.baseurl }}"></script>
-{% endif %}
-
