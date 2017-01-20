@@ -47,6 +47,7 @@ module.exports = {
   plugins: [
       // Avoid publishing files when compilation fails
       new webpack.NoEmitOnErrorsPlugin(),
+      new webpack.optimize.UglifyJsPlugin(),
       new webpack.ProvidePlugin({
           jQuery: 'jquery',
           $: 'jquery',
@@ -64,5 +65,3 @@ module.exports = {
   // Create source maps for the bundle
   devtool: 'source-map',
 };
-//Add in js uglify and css reductions
-//point to app.js and unified css
