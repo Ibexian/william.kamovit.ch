@@ -1,8 +1,5 @@
 //TODO probably need to switch to svg for the image
-//Toast to tell people to play with keys (only on desktop)
-import jQuery from 'jquery';
-
-var $ = jQuery;
+var toastr = require('toastr');
 
 /*!
  * Clean Blog v1.0.0 (http://startbootstrap.com)
@@ -70,6 +67,14 @@ Js for index page - allow for arrow based screen control and earth size increase
 document.addEventListener('DOMContentLoaded', travel, false);
 document.onkeydown = checkKey;
 
+$(document).ready(function() {
+  toastr.options = {
+    "positionClass": "toast-top-center",
+    "showDuration": "30"
+  }
+  toastr.info('Arrow keys control the page background');
+});
+
 function travel() {
   if (!document.getElementById('earth')) { return; }
   var height = document.getElementById('earth').style.height;
@@ -79,46 +84,44 @@ function travel() {
   window.setTimeout(travel, 2000);
 }
 
-function checkKey(e) {
+function checkKey(e = window.event) {
   var changePosition = function(pxPos, change) {
     var px = Number.parseInt(pxPos.slice(0, -2), 10);
     px += change;
-    return px + "px";
+    return `${px}px`;
   };
-  e = e || window.event;
   var space = document.querySelector('body');
   var earth = document.querySelector('#earth');
-  var ehoriz = earth.style.left;
-  var evert = earth.style.top;
-  var horizontal = space.style.backgroundPositionX;
-  var vertical = space.style.backgroundPositionY;
-  if (!horizontal) {
-    horizontal = "0px";
-    vertical = "0px";
-    ehoriz = "0px";
-    evert = "0px";
+  if(!earth){return;}
+  var {left, top} = earth.style;
+  var {backgroundPositionX, backgroundPositionY} = space.style;
+  if (!backgroundPositionX) {
+    backgroundPositionX = "0px";
+    backgroundPositionY = "0px";
+    left = "0px";
+    top = "0px";
   }
 
   if (e.keyCode == '38') {
     // up arrow
-    vertical = changePosition(vertical, 2);
-    evert = changePosition(evert, 10);
+    backgroundPositionY = changePosition(backgroundPositionY, 2);
+    top = changePosition(top, 10);
   } else if (e.keyCode == '40') {
     // down arrow
-    vertical = changePosition(vertical, -2);
-    evert = changePosition(evert, -10);
+    backgroundPositionY = changePosition(backgroundPositionY, -2);
+    top = changePosition(top, -10);
   } else if (e.keyCode == '37') {
     // left arrow
-    horizontal = changePosition(horizontal, 2);
-    ehoriz = changePosition(ehoriz, 10);
+    backgroundPositionX = changePosition(backgroundPositionX, 2);
+    left = changePosition(left, 10);
   } else if (e.keyCode == '39') {
     // right arrow
-    horizontal = changePosition(horizontal, -2);
-    ehoriz = changePosition(ehoriz, -10);
+    backgroundPositionX = changePosition(backgroundPositionX, -2);
+    left = changePosition(left, -10);
   }
-  space.style.backgroundPositionY = vertical;
-  space.style.backgroundPositionX = horizontal;
-  earth.style.top = evert;
-  earth.style.left = ehoriz;
+  space.style.backgroundPositionY = backgroundPositionY;
+  space.style.backgroundPositionX = backgroundPositionX;
+  earth.style.top = top;
+  earth.style.left = left;
 
 }
