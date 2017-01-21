@@ -85,9 +85,14 @@ function travel() {
 }
 
 function checkKey(e = window.event) {
-  var changePosition = function(pxPos, change) {
+  var changePosition = function(pxPos, change, minMax, screen) {
     var px = Number.parseInt(pxPos.slice(0, -2), 10);
     px += change;
+    if(px > minMax){
+      px = -500;
+    } else if (px < -minMax) {
+      px = screen + 500;
+    }
     return `${px}px`;
   };
   var space = document.querySelector('body');
@@ -105,19 +110,19 @@ function checkKey(e = window.event) {
   if (e.keyCode == '38') {
     // up arrow
     backgroundPositionY = changePosition(backgroundPositionY, 2);
-    top = changePosition(top, 10);
+    top = changePosition(top, 10, 4000);
   } else if (e.keyCode == '40') {
     // down arrow
     backgroundPositionY = changePosition(backgroundPositionY, -2);
-    top = changePosition(top, -10);
+    top = changePosition(top, -10, 4000, window.innerHeight);
   } else if (e.keyCode == '37') {
     // left arrow
     backgroundPositionX = changePosition(backgroundPositionX, 2);
-    left = changePosition(left, 10);
+    left = changePosition(left, 10, 5000);
   } else if (e.keyCode == '39') {
     // right arrow
     backgroundPositionX = changePosition(backgroundPositionX, -2);
-    left = changePosition(left, -10);
+    left = changePosition(left, -10, 5000, window.innerWidth);
   }
   space.style.backgroundPositionY = backgroundPositionY;
   space.style.backgroundPositionX = backgroundPositionX;
