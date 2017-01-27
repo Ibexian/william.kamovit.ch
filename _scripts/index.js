@@ -74,6 +74,7 @@ function renderPlanet(){
 
   var geometry = new THREE.SphereGeometry(0.59, 32, 32);
   var texture = new THREE.TextureLoader().load('../img/marsmap1k.jpg');
+  var altTexture = new THREE.TextureLoader().load('../img/terraformed.png');
   var bumpMap = new THREE.TextureLoader().load('../img/marsbump1k.jpg');
   var material = new THREE.MeshPhongMaterial();
   material.map = texture;
@@ -85,6 +86,14 @@ function renderPlanet(){
   mars.material.needsUpdate = true;
   // Add cube to Scene
   scene.add( mars );
+
+  document.querySelector('.navbar-right').addEventListener('mouseenter', terraform.bind(this, mars, altTexture));
+  document.querySelector('.navbar-right').addEventListener('mouseleave', terraform.bind(this, mars, texture));
+  function terraform (mars, texture) {
+    mars.material.map = texture;
+    mars.material.map.needsUpdate = true;
+    renderer.render(scene, camera);
+  }
 
   // Action Loop
   var render = function () {
