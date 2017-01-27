@@ -36,7 +36,9 @@
 </footer>
 
 <script src="{{ "/js/app.bundle.js " | prepend: site.baseurl }}"></script>
-
+{% if page.description == "Adventures in Javascript" %}
+    <script src="{{ "/js/index.bundle.js" | prepend: site.baseurl }}"></script>
+{% endif %}
 {% if page.title == "About" %}
     <script src="{{ "/js/mapbox.bundle.js" | prepend: site.baseurl }}"></script>
 {% endif %}

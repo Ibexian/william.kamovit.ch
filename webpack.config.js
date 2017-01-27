@@ -9,6 +9,7 @@ module.exports = {
   context: path.resolve(__dirname, './_scripts'),
   entry: {
     app: './main.js',
+    index: './index.js',
     mapbox: './newMap.js'
   },
   module: {
