@@ -13,7 +13,6 @@ canvas {
   position: absolute;
   top: 0;
   left: 0;
-  margin-left: -3em;
   z-index: -3;
 }
 
@@ -82,16 +81,14 @@ footer > .container > .row {
 }
 
 @media only screen and (max-width: 768px) {
-  body {
-    border: none;
-  }
   #screen {
     width:100%;
-    border: none;
     margin: 0;
     padding-top: 4em;
     height: 100vh;
-
+  }
+  canvas {
+    display:none;
   }
   .index-container {
     padding-bottom: 4em;

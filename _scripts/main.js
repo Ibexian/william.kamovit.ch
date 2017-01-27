@@ -1,3 +1,5 @@
+require('./bootstrap.min.js');
+
 /*!
  * Clean Blog v1.0.0 (http://startbootstrap.com)
  * Copyright 2015 Start Bootstrap

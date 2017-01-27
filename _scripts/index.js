@@ -62,13 +62,13 @@ function renderPlanet(){
   light.position.set( 0, 0.5, 1 ).normalize();
   scene.add(light);
   //Camera!
-  var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+  var camera = new THREE.PerspectiveCamera( 75, 1, 0.1, 1000 );
   camera.position.z = 1;
 
   // Create a renderer with Antialiasing
   var renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
   // Configure renderer size
-  renderer.setSize( 335, 170 );
+  renderer.setSize( 200, 200 );
   // Append Renderer to DOM
   document.body.appendChild( renderer.domElement );
 
