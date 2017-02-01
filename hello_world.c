@@ -1,3 +1,6 @@
-int doubler(int x) {
-  return 2 * x;
+#include <stdio.h>
+
+int main() {
+  printf("hello, world!\n");
+  return 0;
 }

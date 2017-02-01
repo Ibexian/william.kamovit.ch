@@ -1,5 +1,6 @@
 <html>
 <head>
+  <script src="a.out.js"></script>
   <script>
     // Check for wasm support.
     if (!('WebAssembly' in window)) {
@@ -30,7 +31,7 @@
         });
     }
     // Main part of this example, loads the module and uses it.
-    loadWebAssembly('hello_world.wasm')
+    loadWebAssembly('a.out.wasm')
       .then(instance => {
         var exports = instance.exports; // the exports of that instance
         var doubler = exports._doubler; // the "doubler" function (note "_" prefix)
