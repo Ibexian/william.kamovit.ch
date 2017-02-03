@@ -8,7 +8,10 @@ self.addEventListener('install', function(event) {
     '/img/marsmap1k.jpg',
     '/js/app.bundle.js',
     '/js/index.bundle.js',
-    '/css/index.css'
+    '/css/index.css',
+    'https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css',
+    'https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic',
+    'https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
   ];
 
   event.waitUntil(
@@ -20,11 +23,9 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-  console.log(event.response)
   event.respondWith(
     caches.match(event.request).then(function(response){
       if(response) {
-        console.log(response);
         return response;
       }
       return fetch(event.request);

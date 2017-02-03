@@ -1,6 +1,10 @@
 function registerServiceWorker(){
   if (!navigator.serviceWorker) return;
-  navigator.serviceWorker.register('/js/sw.bundle.js');
+  navigator.serviceWorker.register('/sw.js').then(function() {
+    console.log('Registration worked!');
+  }).catch(function() {
+    console.log('Registration failed!');
+  });
 }
 registerServiceWorker();
 
