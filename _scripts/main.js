@@ -1,3 +1,9 @@
+function registerServiceWorker(){
+  if (!navigator.serviceWorker) return;
+  navigator.serviceWorker.register('/js/sw.bundle.js');
+}
+registerServiceWorker();
+
 require('./bootstrap.min.js');
 
 /*!
