@@ -1,3 +1,4 @@
+var staticCacheName = 'kamovitch-static-v3';
 self.addEventListener('install', function(event) {
   var urlsToCache = [
     '/',
@@ -16,11 +17,28 @@ self.addEventListener('install', function(event) {
 
   event.waitUntil(
     // Add cache the urls from urlsToCache
-    caches.open('kamovitch-static-v2').then(function(cache){
+    caches.open(staticCacheName).then(function(cache){
       return cache.addAll(urlsToCache);
     })
   );
 });
+
+
+self.addEventListener('activate', function(event) {
+  event.waitUntil(
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.filter(function(cacheName) {
+          return cacheName.startsWith('kamovitch-') &&
+                 cacheName != staticCacheName;
+        }).map(function(cacheName) {
+          return caches.delete(cacheName);
+        })
+      );
+    })
+  );
+});
+
 
 self.addEventListener('fetch', function(event) {
   event.respondWith(
