@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  </head>
+  <body>
+    <div id="output" rows="8"></div>
+
+    <script type='text/javascript'>
+      var Module = {
+        preRun: [],
+        postRun: [],
+        print: (function() {
+          var element = document.getElementById('output');
+          if (element) element.innerHTML = ''; // clear browser cache
+          return function(text) {
+            if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
+            // These replacements are necessary if you render to raw HTML
+            //text = text.replace(/&/g, "&amp;");
+            //text = text.replace(/</g, "&lt;");
+            //text = text.replace(/>/g, "&gt;");
+            //text = text.replace('\n', '<br>', 'g');
+            console.log(text);
+            if (element) {
+              element.innerHTML += text + "\n";
+            }
+          };
+        })(),
+        printErr: function(text) {
+          if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
+          if (0) { // XXX disabled for safety typeof dump == 'function') {
+            dump(text + '\n'); // fast, straight to the real console
+          } else {
+            console.error(text);
+          }
+        }
+      };
+    </script>
+    <script>
+
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET', 'hello.wasm', true);
+          xhr.responseType = 'arraybuffer';
+          xhr.onload = function() {
+            Module.wasmBinary = xhr.response;
+            var script = document.createElement('script');
+            script.src = "hello.js";
+            document.body.appendChild(script);
+          };
+          xhr.send(null);
+
+</script>
+  </body>
+</html>

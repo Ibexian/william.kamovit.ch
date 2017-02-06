@@ -1,6 +1,30 @@
 <html>
 <head>
-  <script src="a.out.js"></script>
+  <script>
+    var Module = {
+      preRun: [],
+      postRun: [],
+      print: (function() {
+        return function(text) {
+          var element = document.getElementById('output');
+          element.innerHTML += '</br>'; //Pretty print the response
+          if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
+          console.log(text);
+          if (element) {
+            element.innerHTML += text + "\n";
+          }
+        };
+      })(),
+      printErr: function(text) {
+        if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
+        if (0) { // XXX disabled for safety typeof dump == 'function') {
+          dump(text + '\n'); // fast, straight to the real console
+        } else {
+          console.error(text);
+        }
+      }
+    };
+  </script>
   <script>
     // Check for wasm support.
     if (!('WebAssembly' in window)) {
@@ -9,44 +33,34 @@
     // Loads a WebAssembly dynamic library, returns a promise.
     // imports is an optional imports object
     function loadWebAssembly(filename, imports) {
-      // Fetch the file and compile it
-      return fetch(filename)
-        .then(response => response.arrayBuffer())
-        .then(buffer => WebAssembly.compile(buffer))
-        .then(module => {
-          // Create the imports for the module, including the
-          // standard dynamic library imports
-          imports = imports || {};
-          imports.env = imports.env || {};
-          imports.env.memoryBase = imports.env.memoryBase || 0;
-          imports.env.tableBase = imports.env.tableBase || 0;
-          if (!imports.env.memory) {
-            imports.env.memory = new WebAssembly.Memory({ initial: 256 });
-          }
-          if (!imports.env.table) {
-            imports.env.table = new WebAssembly.Table({ initial: 0, element: 'anyfunc' });
-          }
-          // Create the instance.
-          return new WebAssembly.Instance(module, imports);
-        });
+      var wasmFile = filename + ".wasm";
+      var wasmReader = filename + ".js";
+      var buttonBind = function(instance){
+          var button = document.getElementById('run');
+          button.value = 'Call a method in the WebAssembly module';
+          button.addEventListener('click', function(){
+            Module._main();
+          }, false);
+      }
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', wasmFile, true);
+        xhr.responseType = 'arraybuffer';
+        xhr.onload = function() {
+          Module.wasmBinary = xhr.response;
+          var script = document.createElement('script');
+          script.src = wasmReader;
+          document.body.appendChild(script);
+          buttonBind(Module);
+        };
+        xhr.send(null);
     }
     // Main part of this example, loads the module and uses it.
-    loadWebAssembly('a.out.wasm')
-      .then(instance => {
-        var exports = instance.exports; // the exports of that instance
-        var doubler = exports._doubler; // the "doubler" function (note "_" prefix)
-        // now we are ready, set up the button so the user can run the code
-        var button = document.getElementById('run');
-        button.value = 'Call a method in the WebAssembly module';
-        button.addEventListener('click', function() {
-          var input = 21;
-          alert(input + ' doubled is ' + doubler(input));
-        }, false);
-      }
-    );
+    loadWebAssembly('hello');
   </script>
 </head>
 <body>
   <input type="button" id="run" value="(waiting for WebAssembly)"/>
+  <div id="output"></div>
 </body>
 </html>
