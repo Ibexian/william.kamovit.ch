@@ -1,0 +1,66 @@
+<html>
+<head>
+  <script>
+    var Module = {
+      preRun: [],
+      postRun: [],
+      print: (function() {
+        return function(text) {
+          var element = document.getElementById('output');
+          element.innerHTML += '</br>'; //Pretty print the response
+          if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
+          console.log(text);
+          if (element) {
+            element.innerHTML += text + "\n";
+          }
+        };
+      })(),
+      printErr: function(text) {
+        if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
+        if (0) { // XXX disabled for safety typeof dump == 'function') {
+          dump(text + '\n'); // fast, straight to the real console
+        } else {
+          console.error(text);
+        }
+      }
+    };
+  </script>
+  <script>
+    // Check for wasm support.
+    if (!('WebAssembly' in window)) {
+      alert('you need a browser with wasm support enabled :(');
+    }
+    // Loads a WebAssembly dynamic library, returns a promise.
+    // imports is an optional imports object
+    function loadWebAssembly(filename, imports) {
+      var wasmFile = filename + ".wasm";
+      var wasmReader = filename + ".js";
+      var buttonBind = function(instance){
+          var button = document.getElementById('run');
+          button.value = 'Call a method in the WebAssembly module';
+          button.addEventListener('click', function(){
+            Module._main();
+          }, false);
+      }
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', wasmFile, true);
+        xhr.responseType = 'arraybuffer';
+        xhr.onload = function() {
+          Module.wasmBinary = xhr.response;
+          var script = document.createElement('script');
+          script.src = wasmReader;
+          document.body.appendChild(script);
+          buttonBind(Module);
+        };
+        xhr.send(null);
+    }
+    // Main part of this example, loads the module and uses it.
+    loadWebAssembly('hello');
+  </script>
+</head>
+<body>
+  <input type="button" id="run" value="(waiting for WebAssembly)"/>
+  <div id="output"></div>
+</body>
+</html>
