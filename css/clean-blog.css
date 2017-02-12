@@ -1,3 +1,5 @@
+@import url('bootstrap.min.css');
+
 body {
   font-family: 'Lora', 'Times New Roman', serif;
   font-size: 20px;
@@ -438,3 +440,5 @@ img::-moz-selection {
 body {
   webkit-tap-highlight-color: #f1c40f;
 }
+
+@import url('syntax.css');
