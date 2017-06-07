@@ -37,9 +37,15 @@
       var wasmReader = filename + ".js";
       var buttonBind = function(instance){
           var button = document.getElementById('run');
-          button.value = 'Call a method in the WebAssembly module';
+          button.innerHTML = 'Is it prime?';
           button.addEventListener('click', function(){
-            Module._main();
+            var testNum = Number.parseInt(document.getElementById('testNum').value, 10);
+            if (testNum > 2147483647) {
+              Module.print(`${testNum.toString()} is too big to test`);
+            } else {
+              var primeCheck = Module.isPrime(testNum);
+              Module.print(`${testNum.toString()} is ${primeCheck ? '' : 'not'} prime`);
+            }
           }, false);
       }
 
@@ -56,11 +62,22 @@
         xhr.send(null);
     }
     // Main part of this example, loads the module and uses it.
-    loadWebAssembly('hello');
+    loadWebAssembly('prime');
   </script>
+  <link rel="stylesheet" href="/css/milligram.min.css" />
 </head>
 <body>
-  <input type="button" id="run" value="(waiting for WebAssembly)"/>
-  <div id="output"></div>
+  <div class="container">
+    <h1>Web Assembly Prime Checker</h1>
+    <div class="row">
+      <div class="column">
+        <input type="number" value="1" id="testNum" min="0" max="2147483647"/>
+      </div>
+      <div class="column">
+        <button class="button" id="run">(waiting for WebAssembly)</button>
+      </div>
+    </div>
+    <div id="output"></div>
+  </div>
 </body>
 </html>
