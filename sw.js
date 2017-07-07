@@ -1,4 +1,4 @@
-var staticCacheName = 'kamovitch-static-v3';
+var staticCacheName = 'kamovitch-static-v4';
 self.addEventListener('install', function(event) {
   var urlsToCache = [
     '/',

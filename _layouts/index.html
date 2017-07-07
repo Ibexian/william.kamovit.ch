@@ -3,12 +3,11 @@ layout: default
 ---
 
 <!-- Page Header -->
+<div class="index-heading">
+      <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
+      <span class="sub-index-heading" id="sub-index-heading">{{ page.description }}</span>
+</div>
 <div id="screen">
-  <div class="index-heading">
-        <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
-        <span class="sub-index-heading" id="sub-index-heading">{{ page.description }}</span>
-    </div>
-
     <!-- Main Content -->
     <div class="index-container">
     	<div class="">

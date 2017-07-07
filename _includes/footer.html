@@ -1,8 +1,8 @@
 <!-- Footer -->
 <footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    <div>
+        <div>
+            <div>
                 <ul class="list-inline text-center">
                     <li>
                         <a href="{{ "/feed.xml" | prepend: site.baseurl }}">
@@ -36,9 +36,9 @@
 </footer>
 
 <script src="{{ "/js/app.bundle.js " | prepend: site.baseurl }}"></script>
-{% if page.description == "Adventures in Javascript" %}
+<!-- {% if page.description == "Adventures in Javascript" %}
     <script src="{{ "/js/index.bundle.js" | prepend: site.baseurl }}"></script>
-{% endif %}
+{% endif %} -->
 {% if page.title == "About" %}
     <script src="{{ "/js/mapbox.bundle.js" | prepend: site.baseurl }}"></script>
 {% endif %}

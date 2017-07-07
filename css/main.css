@@ -1,0 +1,86 @@
+/*Colors
+Dark Green #478747
+Light Green #7CB07D
+Light Blue #A5CDC0
+Bright Green #7DAB4A
+Bone White #EAE7D9
+ */
+
+body {
+  background: #A5CDC0;
+  color: #EAE7D9;
+  margin: 0;
+}
+
+a {
+  color: #7dab4a;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #478747;
+}
+
+nav, #screen, footer {
+  max-width: 1700px;
+  margin: 0 auto;
+}
+.navbar-brand {
+  display:none;
+}
+
+nav {
+  background: url("../img/vg-top.png") no-repeat center bottom;
+  background-size: cover;
+  width: 100vw;
+  min-height: 400px;
+}
+
+.index-heading {
+  text-align: center;
+  font-size: 200%;
+  margin-top: -11em;
+  color: #478747;
+}
+
+#screen {
+  margin-top: 11em;
+  padding: 1em;
+}
+
+.index-container {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.post-preview {
+  box-sizing: border-box;
+  box-shadow: 1px 1px 1px #05302a;
+  border-radius: 6px;
+  padding: 2em;
+  margin-bottom: 2em;
+  background: #EAE7d9;
+  color: #05302a;
+}
+
+footer {
+  background: url("../img/vg-bottom.png") no-repeat center top;
+  background-size: cover;
+  width: 100vw;
+  min-height: 400px;
+  margin-bottom: -1em;
+  position: relative;
+}
+footer ul {
+  list-style: none;
+  text-align: center;
+}
+
+ul > li {
+  display: inline;
+}
+.copyright {
+  position: absolute;
+  left: 1em;
+  bottom: 0;
+}
