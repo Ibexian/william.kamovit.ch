@@ -10,6 +10,8 @@ body {
   background: #A5CDC0;
   color: #EAE7D9;
   margin: 0;
+  font-family: 'Fira Sans', Sans-Serif;
+  font-size: 15px;
 }
 
 a {
@@ -36,10 +38,14 @@ nav {
   min-height: 400px;
 }
 
+.post-title, .index-heading {
+  font-family: 'Cormorant Garamond', Serif;
+}
+
 .index-heading {
   text-align: center;
-  font-size: 200%;
-  margin-top: -11em;
+  font-size: 250%;
+  margin-top: -25rem;
   color: #478747;
 }
 
@@ -53,6 +59,10 @@ nav {
   width: 80%;
 }
 
+.post-title {
+  font-size: 40px;
+}
+
 .post-preview {
   box-sizing: border-box;
   box-shadow: 1px 1px 1px #05302a;
@@ -61,6 +71,7 @@ nav {
   margin-bottom: 2em;
   background: #EAE7d9;
   color: #05302a;
+  position: relative;
 }
 
 footer {
@@ -84,3 +95,5 @@ ul > li {
   left: 1em;
   bottom: 0;
 }
+
+@import url('syntax.css');
