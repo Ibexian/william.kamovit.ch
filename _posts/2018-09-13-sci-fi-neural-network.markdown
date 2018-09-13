@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Computer, Write me a Sci-fi"
+title:      "Computer, Write me Sci-fi"
 subtitle:   "A tale of Machine Learning, LSTM, and the Web"
 author:     "Will"
 ---
