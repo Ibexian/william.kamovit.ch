@@ -1,3 +1,10 @@
+---
+layout:     post
+title:      "Computer, Write me a Sci-fi"
+subtitle:   "A tale of Machine Learning, LSTM, and the Web"
+author:     "Will"
+---
+
 # Sci-fi NN
 
 After reading about [how amazing LSTM and Word2Vec are at Natural Language Processing](http://colah.github.io/posts/2014-07-NLP-RNNs-Representations/) and taking a few online courses on Neural Network basics - I decided I had to try it out for myself. But, with any machine learning / NN modeling project what data to use and where to get it are always some of the biggest questions of the whole project. Luckily for me Project Guteberg exists.
