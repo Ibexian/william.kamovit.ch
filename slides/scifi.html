@@ -1,0 +1,465 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Computer, Write me A Sci-fi</title>
+    <meta charset="utf-8">
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+        @import url(https://fonts.googleapis.com/css?family=Space+Mono|Work+Sans);
+        @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+        body {
+            font-family: 'Space Mono';
+            color: #23d160;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Yanone Kaffeesatz';
+            font-weight: normal;
+        }
+
+        .remark-code,
+        .remark-inline-code {
+            font-family: 'Ubuntu Mono';
+        }
+        .remark-slide-content {
+            background-color: #363636 !important;
+        }
+        .image-fit img{
+            width: 80%;
+        }
+
+        .image-small img {
+            width: 50%;
+        }
+
+        .white {
+            width: 100%;
+            background-color: white !important;
+            padding: 3px 2em 3px 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <textarea id="source">
+
+class: center, middle
+
+# Computer, Write me A Sci-fi
+## A tale of Machine Learning, LSTM, and the Web
+
+---
+
+# Deep Learning (a primer)
+### Take some data points and try to model it
+
+---
+count: false
+# Deep Learning (a primer)
+### Take some data points and try to model it
+### To do this we 'train'
+
+---
+count: false
+# Deep Learning (a primer)
+### Take some data points and try to model it
+### To do this we 'train'
+- Pick a line
+---
+count: false
+# Deep Learning (a primer)
+### Take some data points and try to model it
+### To do this we 'train'
+- Pick a line
+- Check how inaccurate it is (loss)
+---
+count: false
+# Deep Learning (a primer)
+### Take some data points and try to model it
+### To do this we 'train'
+- Pick a line
+- Check how inaccurate it is (loss - There are many different Loss functions)
+---
+count: false
+# Deep Learning (a primer)
+### Take some data points and try to model it
+### To do this we 'train'
+- Pick a line
+- Check how inaccurate it is (loss)
+- If the loss is lower save the parameters (weights, bias)
+---
+count: false
+# Deep Learning (a primer)
+### Take some data points and try to model it
+### To do this we 'train'
+- Pick a line
+- Check how inaccurate it is (loss)
+- If the loss is lower save the parameters (weights, bias)
+- Make some changes to the line, and repeat.
+---
+count: false
+class: center, middle
+![Training Example](ml_training.gif)
+---
+count: false
+# Deep Learning (a primer)
+### Take some data points and try to model it
+### To do this we 'train'
+### Layers: Structure of 'Deep Learning'
+
+---
+count: false
+# Deep Learning (a primer)
+### Take some data points and try to model it
+### To do this we 'train'
+### Layers: Structure of 'Deep Learning'
+    - Layers contain 'Neurons' - each of which makes some calculation
+
+---
+count: false
+# Deep Learning (a primer)
+### Take some data points and try to model it
+### To do this we 'train'
+### Layers: Structure of 'Deep Learning'
+    - Layers contain 'Neurons' - each of which makes some calculation
+    - Neurons use 'Activation functions' to determine whether to fire
+
+---
+count: false
+# Deep Learning (a primer)
+### Take some data points and try to model it
+### To do this we 'train'
+### Layers: Structure of 'Deep Learning'
+    - Layers contain 'Neurons' - each of which makes some calculation
+    - Neurons use 'Activation functions' to determine whether to fire
+    - Common Activation functions include 'ReLU' (rectified Linear units) and Sigmoid
+---
+class: center, middle
+
+![ReLU vs Sigmoid](relusig.png)
+
+---
+class: center, middle
+
+.image-fit[![Example of layers and neurons](layerExample.png)]
+
+---
+count: false
+# Deep Learning (a primer)
+### Take some data points and try to model it
+### To do this we 'train'
+### Layers: Structure of 'Deep Learning'
+### Hyper parameters: 'sample size', 'learning rate'
+
+---
+class: center, middle
+## Result of training is pretty much hard coded 'if' statements
+
+---
+# Recurrent Neural Networks (RNN)
+.right.white[![RNN representation](http://adventuresinmachinelearning.com/wp-content/uploads/2017/09/Recurrent-neural-network-768x251.png)]
+### Layers that feed back into themselves while preserving some state.
+
+---
+# Long Short Term Memory (LSTM)
+- Rather than having each data point treated as its own entity - LSTM attempts to remember important variables and forget those that don't matter as much.
+---
+.right.white[![LSTM Diagram](http://adventuresinmachinelearning.com/wp-content/uploads/2017/09/LSTM-diagram.png)]
+---
+count: false
+.right.white[![LSTM Diagram](http://adventuresinmachinelearning.com/wp-content/uploads/2017/09/LSTM-diagram.png)]
+- Input Gate  - decide what inputs we care about (ignore unimportant inputs)
+---
+count: false
+.right.white[![LSTM Diagram](http://adventuresinmachinelearning.com/wp-content/uploads/2017/09/LSTM-diagram.png)]
+- Input Gate  - decide what inputs we care about (ignore unimportant inputs)
+- Forget Gate - decide what is important enough to remember for later
+---
+count: false
+.right.white[![LSTM Diagram](http://adventuresinmachinelearning.com/wp-content/uploads/2017/09/LSTM-diagram.png)]
+- Input Gate  - decide what inputs we care about (ignore unimportant inputs)
+- Forget Gate - decide what is important enough to remember for later
+- Output Gate - decide what to output
+---
+# Keras and Tensorflow
+### Provide Abstraction for Deep Learning
+### Make it much easier to write your own model
+    - Activation Functions, Loss, Optimizers, RNN Layers etc. out of the box
+.image-small.right[![Tensorflow Info Sheet](tensorflow.png)]
+
+---
+# The Data
+- Getting the Data
+        - Project Gutenberg's Sci-Fi CD (174 Books, ~50Mb)
+- Convert Words to Numbers
+- One-hot Encoding
+---
+count: false
+# The Data
+- Getting the Data
+- Convert Words to Numbers
+        - It's hard to math on Strings, so we need to convert the data to numbers
+- One-hot Encoding
+---
+count: false
+# The Data
+- Getting the Data
+- Convert Words to Numbers
+    - It's hard to math on Strings, so we need to convert the data to numbers
+```python
+        data = read_words(filename)
+        counter = collections.Counter(data)
+        count_pairs = sorted(counter.items(), key=lambda x: (-x[1], x[0]))
+        words, _ = list(zip(*count_pairs))
+        word_to_id = dict(zip(words, range(len(words))))
+        return word_to_id
+```
+---
+count: false
+# The Data
+- Getting the Data
+- Convert Words to Numbers
+- One-hot Encoding
+    - Each is then encoded into binary examples ```[0,0,1,0...]```
+---
+count: false
+# The Data
+- Getting the Data
+- Convert Words to Numbers
+- One-hot Encoding
+    - Each is then encoded into binary examples ```[0,0,1,0...]```
+    - Better predictions for non-numeric data, avoids picking an answer that doesn't exist
+---
+# The Model Design
+
+- Set Hidden Size and Convert to Dense Vectors
+- `Embedding` is useful for integer indexed text data 
+- This results in a version of a one-hot where the word's position in the text is taken into account
+``` python
+hidden_size = 500
+# Build the network using sequential 
+model = Sequential()
+# Convert Indexes to Dense Vectors
+model.add(Embedding(vocabulary, hidden_size, input_length=num_steps))
+```
+
+---
+
+# The Model Design
+
+- Stacked LSTMs with 500 'hidden' layers each and ReLU activatiions
+``` python
+# Three Layers of LSTM
+model.add(LSTM(hidden_size, return_sequences=True, activation='relu'))
+model.add(LSTM(hidden_size, return_sequences=True, activation='relu'))
+model.add(LSTM(hidden_size, return_sequences=True, activation='relu'))
+# Use normalization and Dropout to prevent overfitting
+model.add(BatchNormalization())
+model.add(Dropout(0.5))
+```
+
+---
+
+# The Model Design
+
+``` python
+# Add layer for each time step (good for sequential data)
+model.add(TimeDistributed(Dense(vocabulary)))
+# Final activation layer (softmax is better suited than ReLU for category data)
+model.add(Activation('softmax'))
+# Begin by using Adadelta for the first few epochs - switching to SGD later 
+model.compile(loss='categorical_crossentropy',
+        optimizer='Adadelta', metrics=['categorical_accuracy'])
+```
+- Optimizers help modify things like 'momentum' and 'learning rate' during training
+---
+#Training
+### 6 hours of training and ...
+
+all the things of I I Bartleby, I I Bartleby, I I Bartleby, I I Bartleby, I I Bartleby, I I Bartleby,
+
+---
+count: false
+#Training
+### 6 hours of training and ...
+
+all the things of I I Bartleby, I I Bartleby, I I Bartleby, I I Bartleby, I I Bartleby, I I Bartleby,
+
+### 40 hours of training (4 Epochs) :
+
+    '"white "white <eos> "white...'
+---
+class: center, middle
+![nailed it](nailedit.gif)
+
+---
+# Tweaking the Model
+### Switching to character-based encoding
+### Modify Hyperparameters
+---
+# Tweaking the Model
+### Switching to character-based encoding
+### Modify Hyperparameters
+    - Optimizers
+    - Sample Sizes
+    - Learning Rates
+---
+
+#Training
+
+### 1 Epoch (~51% accurate):
+and the strange strange strange straight things that had been a strange strange strange strange strange strange straight through the strange
+
+### 10 Epochs (~62% Categorical Accuracy):
+"Well, there is a strange thing to the stars, and the cadets were all right. The cadets were all right, and the cadets were all right
+
+---
+
+#Training
+
+### 40 Epochs (63.7% Accurate):
+
+It all began with a smile. "We're all right, but I don't know what they were doing about it."
+
+"What about the same thing is the matter with the stars and 
+
+---
+
+#Training
+
+### 101 Epochs (65.2% Accurate):
+Wicked Statisticalist Party, and the statement of the colonists were allowed to see the stars and the stars were allowed to see the stars 
+
+### 121 Epochs (66.4%):
+The only thing that happened to be a man of the Solar System. It was a strange thing that the sun was still there. The sun was still stretching.
+---
+# Epoch 369 - 67%
+.center.image-fit[![training](time.jpg)]
+---
+# Alternate Methods
+### Gated recurrent unit (GRU) & Minimal Gated Unit (MGU)
+- GRUs are similar to LSTM, but have only two gates to manage variable memory. This means that GRUs
+should train faster with similar results.
+
+### Bidirectional
+---
+count: false
+# Alternate Methods
+### Gated recurrent unit (GRU) & Minimal Gated Unit (MGU)
+- GRUs are similar to LSTM, but have only two gates to manage variable memory. This means that GRUs
+should train faster with similar results.
+- MGUs take this concept a step further - even fewer gates, even faster training, similar results
+
+### Bidirectional
+---
+count: false
+# Alternate Methods
+### Gated recurrent unit (GRU) & Minimal Gated Unit (MGU)
+
+### Bidirectional
+- A bidirectional LSTM takes its input data and runs it both forwards and backwards to predict the next (and previous) character 
+in the sequence. Which should, in theory, give a better picture of the data set we're trying to replicate.
+---
+# Sampling
+### Picking the 'best' answer each time can cause looping in the results, so adding some probability to the generator helps
+```python
+    # Modify the prediction array by temp - to avoid always picking the best prediction
+    # Higher temp will result in more varied prediction results
+    preds = np.asarray(preds).astype('float64')
+    # ignore the log of zero issues
+    np.seterr(divide='ignore')
+    preds = np.log(preds) / temperature
+    # reenable the warn
+    np.seterr(divide='warn')
+    exp_preds = np.exp(preds)
+    # Normalize the probability inputs
+    preds = exp_preds / np.sum(exp_preds)
+```
+Using this array of probabilities for each character we simply use a multinomial to roll some dice and pick a winner:
+``` python
+    probabilities = np.random.multinomial(1, preds, 1)
+    return np.argmax(probabilities)
+```
+---
+# Result
+    CHAPTER II
+
+    A second later, the sun stood before him, then took the recording of the
+    voice of the panthers, and the water started on to the
+    air, looking around and began to scream across the atmosphere.
+
+    The car shot back to the earth, the last weapon give it to
+    the first three of the barbarians in their shadows and seats had been pursuing and beautiful
+    from the crowd of green colours. The shape of the southern
+    hemisphere became a mere bright face that carried on
+    their tracks and the counters of the full moon.
+---
+class: center, middle
+## But, how can we make this even better?
+---
+class: center, middle
+## Javascript, obviously.
+---
+# To the Web!
+## Tensorflow js
+### Model Conversion
+```bash
+pip install tensorflowjs
+tensorflowjs_converter --input_format keras \
+                       path/to/my_model.hdf5 \
+                       path/to/tfjs_target_dir
+```
+
+---
+# To the Web!
+## Tensorflow js
+### Problems
+- _Slow_ both on load and on prediction
+- Speed should be sorted out in the future as they're moving from WebGL to C, which should give it parity with python
+- Models don't convert properly from Keras out of the box
+---
+# To the Web!
+## Keras-js
+### Model Conversion
+    - Similar to tensorflowjs, but results in a binary file, which is much smaller
+
+---
+# To the Web!
+## Keras-js
+### Problems, Again
+    - No longer maintained (as of March)
+    - Model Conversion doesn't work, again.
+    - Model loading also doesn't work.
+
+---
+# To the Web!
+## ibexian-keras-js
+    - Converts models properly
+    - Loads models
+    - Still not maintained  ¯\_(ツ)_/¯
+
+---
+
+class: center, middle
+[![site example](wmasf-demo.gif)](https://william.kamovit.ch/writeMeAScifi/)
+
+---
+# The Future
+- Wait for Tensorflow.js to implement C bindings
+- Re-write the LSTM matrix math in Rust and WASM
+- A Better Model - Fewer LSTMs, Begin with Tensorflow ?
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+        var slideshow = remark.create();
+    </script>
+</body>
+
+</html>
