@@ -5,18 +5,10 @@
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <ul class="list-inline text-center">
                     <li>
-                        <a href="{{ "/feed.xml" | prepend: site.baseurl }}">
+                        <a href="https://www.linkedin.com/in/williamkamovitch/">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://twitter.com/{{ site.twitter_username }}">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
@@ -36,9 +28,3 @@
 </footer>
 
 <script src="{{ "/js/app.bundle.js " | prepend: site.baseurl }}"></script>
-{% if page.description == "Adventures in Javascript" %}
-    <script src="{{ "/js/index.bundle.js" | prepend: site.baseurl }}"></script>
-{% endif %}
-{% if page.title == "About" %}
-    <script src="{{ "/js/mapbox.bundle.js" | prepend: site.baseurl }}"></script>
-{% endif %}

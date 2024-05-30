@@ -5,7 +5,6 @@ email: wjkamovitch@gmail.com
 description: "The personal blog for William Kamovitch"
 baseurl: ""
 url: "https://william.kamovit.ch"
-twitter_username: wkamovitch
 github_username:  ibexian
 
 # Build settings
